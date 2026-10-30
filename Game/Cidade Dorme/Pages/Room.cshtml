@@ -1,0 +1,119 @@
+﻿@page
+@model Cidade_Dorme.Pages.RoomModel
+
+@{
+    ViewData["Title"] = "Sala de espera";
+}
+
+<div class="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
+    <main class="w-full max-w-lg space-y-6">
+
+        <header class="text-center space-y-3">
+            <div class="text-5xl">🌙</div>
+
+            <h1 class="text-3xl font-bold">
+                Cidade Dorme
+            </h1>
+
+            <p class="text-base-content/70">
+                Reúna seus amigos para começar a partida.
+            </p>
+        </header>
+
+        <section class="card bg-base-100 shadow-xl border border-base-300">
+            <div class="card-body gap-6">
+
+                <!-- Estado de carregamento -->
+                <div id="loadingState" class="text-center py-8 space-y-4">
+                    <span class="loading loading-spinner loading-lg text-primary"></span>
+
+                    <h2 id="loadingTitle" class="text-xl font-semibold">
+                        Preparando sua sala...
+                    </h2>
+
+                    <p id="loadingDescription" class="text-base-content/60">
+                        Estamos conectando ao servidor.
+                    </p>
+                </div>
+
+                <!-- Informações da sala -->
+                <div id="roomState" class="space-y-6">
+
+                    <div class="text-center space-y-2">
+                        <p class="text-sm font-medium text-base-content/60">
+                            CÓDIGO DA SALA
+                        </p>
+
+                        <div class="relative flex w-full items-center justify-center">
+                            <div class="flex items-center gap-3">
+                                <span id="roomCode"
+                                      class="text-3xl font-bold tracking-widest">
+                                </span>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-base-content/60">
+                            Compartilhe o código com seus amigos.
+                        </p>
+                    </div>
+
+                    <div class="divider my-0"></div>
+
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-bold">
+                            Jogadores
+                        </h2>
+
+                        <span id="playerCount" class="badge badge-primary">
+                            0 jogadores
+                        </span>
+                    </div>
+
+                    <ul id="playerList" class="space-y-2">
+                    </ul>
+
+                    <div class="alert alert-info">
+                        <span>
+                            Aguardando outros jogadores entrarem na sala...
+                        </span>
+                    </div>
+
+                    <button id="leaveRoomButton"
+                            type="button"
+                            class="btn btn-outline w-full mt-3">
+                        Sair da sala
+                    </button>
+                </div>
+
+                <!-- Estado de erro -->
+                <div id="errorState" class="space-y-4">
+                    <div class="alert alert-error">
+                        <span id="errorMessage">
+                            Não foi possível preparar a sala.
+                        </span>
+                    </div>
+
+                    <button id="retryButton"
+                            type="button"
+                            class="btn btn-primary w-full">
+                        Tentar novamente
+                    </button>
+
+                    <a href="/" class="btn btn-ghost w-full">
+                        Voltar ao início
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="text-center text-sm text-base-content/50">
+            A noite está apenas começando...
+        </footer>
+
+    </main>
+</div>
+
+@section Scripts {
+    <script src="~/js/room.js" asp-append-version="true"></script>
+}

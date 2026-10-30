@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>@ViewData["Title"] - Cidade Dorme</title>
+
+    <link rel="stylesheet" href="~/css/daisyui.min.css" />
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    @RenderBody()
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
