@@ -28,6 +28,18 @@ namespace Cidade_Dorme.Hubs
             return code;
         }
 
+        public async Task<string> StartGame(string code, string name)
+        {
+            gameService.JoinRoom(Context.ConnectionId, name, code);
+
+            await Groups.AddToGroupAsync(Context.ConnectionId, code);
+
+            await Clients.Group(code).SendAsync("PlayerJoined", $"{name} Entrou!");
+            await Clients.Group(code).SendAsync("PlayerListUpdated", gameService.GetPlayerList(code));
+
+            return code;
+        }
+
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             var code = gameService.Disconnect(Context.ConnectionId, out string? playerName);

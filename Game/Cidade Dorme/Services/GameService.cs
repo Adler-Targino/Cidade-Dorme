@@ -57,7 +57,7 @@ namespace Cidade_Dorme.Services
             {
                 ConnectionId = connectionId,
                 Name = name,
-                Role = PlayerRole.Host
+                Role = PlayerRole.Spectator
             };
 
             if (!_rooms.TryGetValue(code, out var room))
